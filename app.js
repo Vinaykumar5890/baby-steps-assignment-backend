@@ -15,9 +15,7 @@ mongoose
   .then(() => console.log('DB Connected..'))
   .catch(err => console.log(err))
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
-})
+
 
 // Get all doctors
 app.get('/doctors', async (req, res) => {

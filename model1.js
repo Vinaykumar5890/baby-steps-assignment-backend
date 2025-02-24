@@ -2,10 +2,7 @@ const mongoose  = require('mongoose')
 
 const Appointment = new mongoose.Schema({
     doctorId: String,
-    date: {
-      type: Date,
-      default: Date.now,
-    },
+    date: String,
     duration: Number,
     appointmentType: String,
     patientName: String,
