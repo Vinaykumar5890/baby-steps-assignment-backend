@@ -27,6 +27,23 @@ app.get('/doctors', async (req, res) => {
   }
 });
 
+app.get('/doctors/:id', async (req, res) => {
+  try {
+    const doctorId = req.params.id; // Get doctor ID from the URL parameter
+    const doctor = await Doctor.findById(doctorId); // Fetch doctor from the database by ID
+
+    if (!doctor) {
+      return res.status(404).json({ message: 'Doctor not found' }); // Handle case if doctor doesn't exist
+    }
+
+    res.json(doctor); // Return the doctor details in JSON format
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' }); // Handle server errors
+  }
+});
+
+
 // Get available slots for a doctor on a given date
 app.get('/doctors/:id/slots', async (req, res) => {
   try {
