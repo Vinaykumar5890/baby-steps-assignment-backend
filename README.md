@@ -20,7 +20,7 @@ This is the backend service for the Baby Steps appointment booking system. It al
    ```
 3. Start the server:
    ```sh
-   npm start
+   nodemon app.js
    ```
 
 ## ⚙️ API Endpoints
