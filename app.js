@@ -136,6 +136,23 @@ app.get('/appointments', async (req, res) => {
   }
 });
 
+app.get('/appointment/:id', async (req, res) => {
+  try {
+    const doctorId = req.params.id; // Get doctor ID from the URL parameter
+    const doctor = await  Appointment.findById(doctorId); // Fetch doctor from the database by ID
+
+    if (!doctor) {
+      return res.status(404).json({ message: 'Appointment not found' }); // Handle case if doctor doesn't exist
+    }
+
+    res.json(doctor); // Return the doctor details in JSON format
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' }); // Handle server errors
+  }
+});
+
+
 //Update appointment
 
 // Update an appointment
